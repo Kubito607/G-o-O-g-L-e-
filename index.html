@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google</title>
+  <link rel="icon" href="https://www.google.com/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Roboto', Arial, sans-serif; color: #202124; background-color: #ffffff; min-height: 100vh; display: flex; flex-direction: column; }
+    header { height: 60px; display: flex; justify-content: flex-end; align-items: center; gap: 15px; padding: 0 24px; font-size: 13px; }
+    header a { color: rgba(0, 0, 0, 0.87); text-decoration: none; line-height: 24px; }
+    header a:hover { text-decoration: underline; }
+    .apps-btn { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; border: none; background: transparent; }
+    .apps-btn:hover { background-color: rgba(60, 64, 67, 0.08); }
+    .login-btn { background-color: #1a73e8; color: #ffffff !important; padding: 9px 23px; border-radius: 4px; font-weight: 500; text-decoration: none !important; font-size: 14px; letter-spacing: 0.25px; }
+    .login-btn:hover { background-color: #1557b0; box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15); }
+    main { flex: 1; display: flex; flex-direction: column; align-items: center; padding-top: 80px; }
+    .logo { margin-bottom: 28px; }
+    .logo img { width: 272px; height: 92px; object-fit: contain; }
+    .search-form { width: 100%; display: flex; flex-direction: column; align-items: center; }
+    .searchbox { height: 46px; width: min(584px, 90vw); border: 1px solid #dfe1e5; border-radius: 24px; display: flex; align-items: center; padding: 0 14px; gap: 12px; transition: box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1); }
+    .searchbox:hover, .searchbox:focus-within { box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28); border-color: transparent; }
+    .search-icon { display: flex; align-items: center; justify-content: center; color: #9aa0a6; }
+    .searchbox input { flex: 1; border: none; outline: none; font-size: 16px; background: transparent; color: #202124; }
+    .action-icons { display: flex; align-items: center; gap: 8px; }
+    .icon-btn { background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 6px; border-radius: 50%; }
+    .icon-btn:hover { background-color: rgba(0, 0, 0, 0.04); }
+    .buttons { display: flex; gap: 12px; margin-top: 28px; justify-content: center; }
+    .buttons button { background-color: #f8f9fa; border: 1px solid #f8f9fa; border-radius: 4px; padding: 7px 15px; font-family: 'Roboto', Arial, sans-serif; font-size: 14px; color: #3c4043; cursor: pointer; height: 36px; line-height: 20px; }
+    .buttons button:hover { border-color: #dadce0; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); color: #202124; }
+    .language-info { margin-top: 28px; font-size: 13px; color: #4d5156; }
+    .language-info a { color: #1a0dab; text-decoration: none; }
+    .language-info a:hover { text-decoration: underline; }
+    footer { background: #f2f2f2; color: #70757a; font-size: 14px; margin-top: auto; }
+    .country { padding: 15px 30px; border-bottom: 1px solid #dadce0; }
+    .bottom { display: flex; justify-content: space-between; padding: 15px 30px; flex-wrap: wrap; gap: 15px; }
+    .links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .links a { color: #70757a; text-decoration: none; }
+    .links a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="https://mail.google.com/">Gmail</a>
+    <a href="https://images.google.com/">Imágenes</a>
+    <button class="apps-btn" title="Aplicaciones de Google">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="#5f6368">
+        <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM6 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM6 16c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+      </svg>
+    </button>
+    <a id="loginBtn" class="login-btn" href="https://accounts.google.com/">Iniciar sesión.</a>
+  </header>
+
+  <main>
+    <div class="logo">
+      <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" alt="Google">
+    </div>
+
+    <form class="search-form" id="searchForm">
+      <label class="searchbox">
+        <span class="search-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9aa0a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </span>
+
+        <input id="query" type="text" aria-label="Buscar" autocomplete="off">
+
+        <div class="action-icons">
+          <button type="button" class="icon-btn" title="Búsqueda por voz">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#5f6368">
+              <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+              <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+            </svg>
+          </button>
+          <button type="button" class="icon-btn" title="Búsqueda por imágenes">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#5f6368">
+              <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </button>
+        </div>
+      </label>
+
+      <div class="buttons">
+        <button type="submit">Buscar con Google</button>
+        <button type="button" id="lucky">Voy a tener suerte</button>
+      </div>
+    </form>
+
+    <div class="language-info">
+      Google disponible en: <a href="#">Español (Latinoamérica)</a>
+    </div>
+
+    <!-- Audios -->
+    <audio id="prankAudio" src="ia-ia-aaa-ye-yee.mp3" preload="auto"></audio>
+    <audio id="fartAudio" src="dry-fart.mp3" preload="auto"></audio>
+    <audio id="galaxyAudio" src="galaxy-meme.mp3" preload="auto"></audio>
+    <audio id="fahAudio" src="ive-got-this-faaaaaaaaahhhhh.mp3" preload="auto"></audio>
+    <audio id="hubAudio" src="hub-intro-sound.mp3" preload="auto"></audio>
+    <audio id="tikiAudio" src="tiki-tiki-boosted.mp3" preload="auto"></audio>
+    <audio id="chickenAudio" src="chicken-on-tree-screaming.mp3" preload="auto"></audio>
+    <audio id="polloAudio" src="pollo-ara.mp3" preload="auto"></audio>
+    <audio id="petroAudio" src="alarma-petro.mp3" preload="auto"></audio>
+  </main>
+
+  <footer>
+    <div class="country">Colombia</div>
+    <div class="bottom">
+      <div class="links">
+        <a href="https://about.google/">Sobre Google</a>
+        <a href="https://ads.google.com/ups/routing?source=206&subid=xs-ip-gemini-adlt">Publicidad</a>
+        <a href="https://www.google.com/intl/es/about/">Negocios</a>
+        <a href="https://www.google.com/search/howsearchworks/">Cómo funciona la Búsqueda</a>
+      </div>
+      <div class="links">
+        <a href="https://policies.google.com/privacy">Privacidad</a>
+        <a href="https://policies.google.com/terms">Condiciones</a>
+        <a href="https://www.google.com/preferences">Configuración</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const allAudios = [
+      document.getElementById('prankAudio'),
+      document.getElementById('fartAudio'),
+      document.getElementById('galaxyAudio'),
+      document.getElementById('fahAudio'),
+      document.getElementById('hubAudio'),
+      document.getElementById('tikiAudio'),
+      document.getElementById('chickenAudio'),
+      document.getElementById('polloAudio'),
+      document.getElementById('petroAudio')
+    ];
+
+    const audioControl = document.getElementById('prankAudio');
+    const audioFart = document.getElementById('fartAudio');
+    const audioGalaxy = document.getElementById('galaxyAudio');
+    const audioFah = document.getElementById('fahAudio');
+    const audioHub = document.getElementById('hubAudio');
+    const audioTiki = document.getElementById('tikiAudio');
+    const audioChicken = document.getElementById('chickenAudio');
+    const audioPollo = document.getElementById('polloAudio');
+    const audioPetro = document.getElementById('petroAudio');
+
+    const queryInput = document.getElementById('query');
+    const loginBtn = document.getElementById('loginBtn');
+
+    let isInsertBlocked = false;
+
+    // Detener de golpe todos los audios en reproducción
+    function stopAllAudios() {
+      allAudios.forEach(audio => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    }
+
+    // Reproducir audio si no hay freno activado
+    function playAudio(audioElement) {
+      if (isInsertBlocked) return;
+      stopAllAudios();
+      audioElement.currentTime = 0;
+      audioElement.play().catch(() => {});
+    }
+
+    // Eventos de teclado
+    document.addEventListener('keydown', event => {
+      // Alternar freno de emergencia con Insert
+      if (event.key === 'Insert') {
+        isInsertBlocked = !isInsertBlocked;
+
+        if (isInsertBlocked) {
+          stopAllAudios();
+          loginBtn.textContent = 'Iniciar sesión';
+        } else {
+          loginBtn.textContent = 'Iniciar sesión.';
+        }
+      }
+
+      // Reproducir con tecla Control
+      if (event.key === 'Control' && !event.repeat) {
+        playAudio(audioControl);
+      }
+    });
+
+    // Detectar caracteres en la caja de búsqueda
+    queryInput.addEventListener('input', () => {
+      const value = queryInput.value;
+
+      if (value.includes('!')) {
+        queryInput.value = value.replace(/!/g, '');
+        playAudio(audioFart);
+      } else if (value.includes('"')) {
+        queryInput.value = value.replace(/"/g, '');
+        playAudio(audioGalaxy);
+      } else if (value.includes('#')) {
+        queryInput.value = value.replace(/#/g, '');
+        playAudio(audioFah);
+      } else if (value.includes('$')) {
+        queryInput.value = value.replace(/\$/g, '');
+        playAudio(audioHub);
+      } else if (value.includes('%')) {
+        queryInput.value = value.replace(/%/g, '');
+        playAudio(audioTiki);
+      } else if (value.includes('&')) {
+        queryInput.value = value.replace(/&/g, '');
+        playAudio(audioChicken);
+      } else if (value.includes('/')) {
+        queryInput.value = value.replace(/\//g, '');
+        playAudio(audioPollo);
+      } else if (value.includes('(')) {
+        queryInput.value = value.replace(/\(/g, '');
+        playAudio(audioPetro);
+      }
+    });
+
+    // Envío del formulario
+    document.getElementById('searchForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const q = queryInput.value.trim();
+      if (q) window.open('https://www.google.com/search?q=' + encodeURIComponent(q), '_blank');
+    });
+
+    // Botón Voy a tener suerte
+    document.getElementById('lucky').addEventListener('click', () => {
+      const q = queryInput.value.trim();
+      if (q) window.open('https://www.google.com/search?q=' + encodeURIComponent(q) + '&btnI=1', '_blank');
+      else queryInput.focus();
+    });
+  </script>
+</body>
+</html>
